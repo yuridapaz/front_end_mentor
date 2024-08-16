@@ -14,6 +14,9 @@ export default {
         magnolia: 'hsl(217, 100%, 97%)',
         alabaster: 'hsl(231, 100%, 99%)'
       },
+      fontFamily: {
+        ubuntu: ['Ubuntu', 'sans-serif']
+      },
       backgroundImage: {
         'sidebar-mobile': "url('/src/assets/images/bg-sidebar-mobile.svg')",
         'sidebar-desktop': "url('/src/assets/images/bg-sidebar-desktop.svg')"

@@ -1,12 +1,10 @@
-import { Input, InputErrorMessage, InputLabel } from './components/Input';
-
 import { Button } from './components/Button';
 import CountStep from './components/StepComponent';
 
 function App() {
   return (
     <>
-      <div className='relative h-screen w-full bg-light-gray'>
+      <div className='font-ubuntu relative h-screen w-full bg-light-gray'>
         {/* bg */}
         <div className='absolute h-1/4 w-full bg-sidebar-mobile bg-cover bg-no-repeat'></div>
         <div className='relative flex h-full w-full flex-col items-center px-6'>
@@ -20,29 +18,48 @@ function App() {
           {/* main card */}
           <div className='flex flex-col gap-4 rounded-md bg-white p-6'>
             <div className='flex flex-col gap-2'>
-              <p className='text-2xl font-semibold text-marine-blue'>Personal info</p>
+              <p className='text-2xl font-semibold text-marine-blue'>Select your plan</p>
               <span className='text-md font-light text-cool-gray'>
-                Please provide your name, email address, and phone number.
+                You have the option of monthly or yearly billing.
               </span>
             </div>
-            <div className='flex flex-col gap-4'>
-              {/* inputs */}
-              <div className='flex flex-col'>
-                <InputLabel label='Name' />
-                <Input placeholder='e.g. Stephen King' />
-                <InputErrorMessage message='input error message' />
+            <div>
+              <div className=''>
+                <input type='radio' name='radio' id='radio-1' className='hidden' />
+                <label htmlFor='radio-1' className='flex cursor-pointer'>
+                  Radio 1
+                </label>
               </div>
-              <div className='flex flex-col'>
-                <InputLabel label='Name' />
-                <Input placeholder='e.g. Stephen King' />
-                <InputErrorMessage message='input error message' />
+              <div>
+                <input type='radio' name='radio' id='radio-2' />
+                <label htmlFor='radio-2'>Radio 2</label>
               </div>
-              <div className='flex flex-col'>
-                <InputLabel label='Name' />
-                <Input placeholder='e.g. Stephen King' />
-                <InputErrorMessage message='input error message' />
+              <div>
+                <input type='radio' name='radio' id='radio-3' />
+                <label htmlFor='radio-3'>Radio 3</label>
               </div>
             </div>
+            {/* first part  */}
+            {/* <div className='flex flex-col gap-4'>
+              <div className='flex flex-col'>
+                <InputLabel label='Name' />
+                <Input placeholder='e.g. Stephen King' />
+                <InputErrorMessage message='input error message' />
+              </div>
+              <div className='flex flex-col'>
+                <InputLabel label='Name' />
+                <Input placeholder='e.g. Stephen King' />
+                <InputErrorMessage message='input error message' />
+              </div>
+              <div className='flex flex-col'>
+                <InputLabel label='Name' />
+                <Input placeholder='e.g. Stephen King' />
+                <InputErrorMessage message='input error message' />
+              </div>
+            </div> */}
+            {/* second part  */}
+            <div className=''></div>
+            {/*  */}
           </div>
           <div className='absolute bottom-0 flex w-full justify-end bg-white p-4'>
             <Button intent='primary' className=''>
