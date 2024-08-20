@@ -1,12 +1,12 @@
 type Props = {
   number: number;
-  complete: boolean;
+  currentStep: boolean;
 };
 
-const CountStep = ({ number, complete }: Props) => {
+const CountStep = ({ number, currentStep }: Props) => {
   return (
     <div
-      className={`flex h-8 w-8 items-center justify-center rounded-full border border-white font-semibold ${complete ? 'bg-light-blue text-marine-blue' : 'bg-none'} cursor-pointer`}>
+      className={`flex h-8 w-8 items-center justify-center rounded-full border border-white font-semibold ${currentStep ? 'bg-light-blue text-marine-blue' : 'bg-none'} cursor-pointer`}>
       {number}
     </div>
   );
