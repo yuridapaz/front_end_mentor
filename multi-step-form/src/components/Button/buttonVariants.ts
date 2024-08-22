@@ -1,10 +1,10 @@
 import { cva } from 'class-variance-authority';
 
-export const buttonVariants = cva('transition-all cursor-pointer disabled:cursor-not-allowed', {
+export const buttonVariants = cva('transition-all cursor-pointer rounded-md disabled:cursor-not-allowed', {
   variants: {
     intent: {
-      primary: 'bg-marine-blue rounded-md text-white hover:bg-purplish-blue',
-      secondary: ''
+      primary: 'bg-marine-blue  text-white hover:bg-marine-blue/90',
+      secondary: 'bg-magnolia text-cool-gray hover:border hover:border-cool-gray border border-magnolia'
     },
     size: {
       extraSmall: 'px-2.5 py-1.5 text-xs',
