@@ -1,25 +1,21 @@
-import { type VariantProps } from 'class-variance-authority';
-import { InputHTMLAttributes } from 'react';
-import { twMerge } from 'tailwind-merge';
-import { inputVariants } from '../Input/inputVariants';
-
-type InputComponent = InputHTMLAttributes<HTMLInputElement>;
-type InputVariants = VariantProps<typeof inputVariants> & InputComponent & { 'data-test-id'?: string };
-
-export const Input = ({ intent, className, 'data-test-id': dataTestId, placeholder }: InputVariants) => {
-  return (
-    <input
-      className={twMerge(inputVariants({ intent, className }))}
-      placeholder={placeholder}
-      data-test-id={dataTestId}
-    />
-  );
-};
+// type InputComponent = InputHTMLAttributes<HTMLInputElement>;
+// type InputVariants = VariantProps<typeof inputVariants> & InputComponent & { 'data-test-id'?: string };
+// export const Input = ({ intent, className, name, 'data-test-id': dataTestId, ...props }: InputVariants) => {
+//   const { register } = useFormContext();
+//   return (
+//     <input
+//       className={twMerge(inputVariants({ intent, className }))}
+//       data-test-id={dataTestId}
+//       {...register(name, { required: true })}
+//       {...props}
+//     />
+//   );
+// };
 
 export const InputLabel = ({ label }: { label: string }) => {
-  return <p className='text-sm'>{label}</p>;
+  return <p className='text-sm text-marine-blue/90'>{label}</p>;
 };
 
 export const InputErrorMessage = ({ message }: { message: string }) => {
-  return <span className='pr-2 text-end text-xs text-strawberry-red'>{message}</span>;
+  return <span className='pr-2 text-end text-xs text-strawberry-red/80'>{message}</span>;
 };
