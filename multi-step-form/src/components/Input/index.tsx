@@ -12,10 +12,18 @@
 //   );
 // };
 
+import { HTMLAttributes } from 'react';
+
 export const InputLabel = ({ label }: { label: string }) => {
   return <p className='text-sm text-marine-blue/90'>{label}</p>;
 };
 
-export const InputErrorMessage = ({ message }: { message: string }) => {
-  return <span className='pr-2 text-end text-xs text-strawberry-red/80'>{message}</span>;
+type SpanProps = HTMLAttributes<HTMLSpanElement> & { message: string };
+
+export const InputErrorMessage = ({ message, ...props }: SpanProps) => {
+  return (
+    <span className='pr-2 text-end text-xs text-strawberry-red/80' {...props}>
+      {message}
+    </span>
+  );
 };

@@ -4,7 +4,10 @@ import Heading from '../Heading';
 import { useFormContext } from 'react-hook-form';
 
 const AccountForm = () => {
-  const { register } = useFormContext();
+  const {
+    register,
+    formState: { errors }
+  } = useFormContext();
 
   return (
     <>
@@ -16,9 +19,11 @@ const AccountForm = () => {
             className='rounded-md border border-cool-gray p-2 pl-4 placeholder:text-sm placeholder:font-medium'
             type='text'
             placeholder='e.g. Stephen King'
-            {...register('name')}
+            {...register('name', {
+              // required: true
+            })}
           />
-          <InputErrorMessage message='input error message' />
+          {errors.name && <InputErrorMessage message='input error message' />}
         </div>
         <div className='flex flex-col'>
           <InputLabel label='Email Address' />
@@ -26,9 +31,11 @@ const AccountForm = () => {
             className='rounded-md border border-cool-gray p-2 pl-4 placeholder:text-sm placeholder:font-medium'
             type='email'
             placeholder='e.g.stephenking@lorem.com'
-            {...register('email')}
+            {...register('email', {
+              // required: true
+            })}
           />
-          <InputErrorMessage message='input error message' />
+          {errors.email && <InputErrorMessage message='input error message' />}
         </div>
         <div className='flex flex-col'>
           <InputLabel label='Phone Number' />
@@ -36,9 +43,11 @@ const AccountForm = () => {
             className='rounded-md border border-cool-gray p-2 pl-4 placeholder:text-sm placeholder:font-medium'
             type='tel'
             placeholder='e.g. +1 234 567 890'
-            {...register('phone')}
+            {...register('phone', {
+              // required: true
+            })}
           />
-          <InputErrorMessage message='input error message' />
+          {errors.phone && <InputErrorMessage message='input error message' />}
         </div>
       </div>
     </>
