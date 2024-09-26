@@ -56,9 +56,9 @@ function App() {
           <div className='absolute h-1/4 w-full bg-sidebar-mobile bg-cover bg-no-repeat md:h-1/3 lg:invisible'></div>
           <form
             onSubmit={methods.handleSubmit(onSubmit)}
-            className='relative flex w-full flex-col items-center px-4 pb-24 sm:max-w-[600px] lg:max-w-5xl lg:grid-cols-2 lg:flex-row lg:items-center lg:gap-8 lg:rounded-lg lg:bg-slate-300 lg:p-8'>
+            className='relative flex w-full flex-col items-center px-4 pb-24 sm:max-w-[600px] lg:min-h-[600px] lg:max-w-5xl lg:grid-cols-2 lg:flex-row lg:items-stretch lg:gap-8 lg:rounded-lg lg:bg-slate-300 lg:p-8'>
             {/* count step  wrapper */}
-            <div className='relative my-8 flex w-full justify-center gap-4 font-semibold text-white md:mt-28 md:justify-around lg:my-0 lg:w-[450px] lg:flex-col lg:justify-center lg:rounded-lg lg:bg-sidebar-desktop lg:p-8'>
+            <div className='relative my-8 flex w-full justify-center gap-4 font-semibold text-white md:mt-28 md:justify-around lg:m-auto lg:my-0 lg:w-[420px] lg:flex-col lg:justify-start lg:rounded-lg lg:bg-sidebar-desktop lg:bg-cover lg:bg-no-repeat lg:p-8'>
               {Object.keys(stepsObj).map((key, index) => (
                 <div className='flex flex-col items-center gap-3 lg:flex-row lg:gap-6 lg:p-2'>
                   <CountStep currentStep={currentStepIndex} number={Number(key)} />
