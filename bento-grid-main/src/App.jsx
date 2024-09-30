@@ -59,14 +59,29 @@ function App() {
             className="max-h-none w-full max-w-none object-cover object-top"
           />
         </div>
-        <div className="col-span-3 row-span-5 rounded-lg bg-bento-yellow-500">
-          <img src="" alt="" />
+        <div className="col-span-3 row-span-5 flex flex-col justify-between rounded-lg bg-bento-yellow-500 p-5">
+          <p className="pr-10 text-4xl leading-8 tracking-tighter">
+            Write your content using Al.
+          </p>
+          <img src={"src/assets/images/illustration-ai-content.webp"} alt="" />
         </div>
-        <div className="col-span-3 row-span-3 rounded-lg bg-white">
-          <img src="" alt="" />
+        <div className="col-span-3 row-span-3 flex flex-col rounded-lg bg-white p-5 pb-0">
+          <p className="mb-2 text-6xl"> {">"}56% </p>
+          <p className="font-light">faster audience growth</p>
+          <img
+            src={"src/assets/images/illustration-audience-growth.webp"}
+            alt=""
+            className="m-auto w-5/6 max-w-none"
+          />
         </div>
-        <div className="col-span-6 row-span-3 rounded-lg bg-bento-purple-500">
-          <img src="" alt="" />
+        <div className="col-span-6 row-span-3 flex gap-8 rounded-lg bg-bento-purple-500 p-5">
+          <img
+            src={"src/assets/images/illustration-grow-followers.webp"}
+            alt=""
+          />
+          <p className="self-center text-[2.5rem] leading-8 tracking-tight text-white">
+            Grow followers with non-stop content.
+          </p>
         </div>
       </div>
     </div>
