@@ -9,11 +9,8 @@ function App() {
       <div className="">
         <div className="flex flex-col gap-4">
           <div className="relative w-full rounded-lg">
-            <img src={'src/assets/images/mobile/image-baklava-mobile.jpg'} className="rounded-lg" alt="" />
-            <button className="absolute -bottom-5 left-2/4 -translate-x-2/4 rounded-full bg-slate-50 px-6 py-2">
-              Button
-            </button>
-            <CartButton>Oi</CartButton>
+            <img src={'src/assets/images/mobile/image-baklava-mobile.jpg'} className="rounded-lg object-cover" alt="" />
+            <CartButton />
           </div>
           <div className="flex flex-col">
             <p className="text-sm font-extralight">Waffle</p>

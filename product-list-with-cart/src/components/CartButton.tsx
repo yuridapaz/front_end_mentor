@@ -1,39 +1,20 @@
-// components/button.ts
-import { VariantProps, cva } from 'class-variance-authority';
-
+import AddToCartIcon from '../assets/icons/icon-add-to-cart.svg';
 import { ButtonHTMLAttributes } from 'react';
+import React from 'react';
 
-const buttonVariants = cva(['font-semibold', 'border', 'rounded'], {
-  variants: {
-    intent: {
-      primary: ['bg-blue-500', 'text-white', 'border-transparent', 'hover:bg-blue-600'],
+// export const CartButton = ({ ...props }: ButtonHTMLAttributes<HTMLButtonElement>) => {
+//   return (
+//     <button className="" {...props}>
+//       <AddToCartIcon /> Add to Cart
+//     </button>
+//   );
+// };
 
-      secondary: ['bg-white', 'text-gray-800', 'border-gray-400', 'hover:bg-gray-100'],
-    },
-    size: {
-      small: ['text-sm', 'py-1', 'px-2'],
-      medium: ['text-base', 'py-2', 'px-4'],
-    },
-  },
-  compoundVariants: [
-    {
-      intent: 'primary',
-      size: 'medium',
-      class: 'uppercase',
-    },
-  ],
-  defaultVariants: {
-    intent: 'primary',
-    size: 'medium',
-  },
-});
-
-type ButtonVariants = VariantProps<typeof buttonVariants> & ButtonHTMLAttributes<HTMLButtonElement>;
-
-export const CartButton = ({ children, intent, className, size, ...props }: ButtonVariants) => {
+export const CartButton = ({ ...props }: ButtonHTMLAttributes<HTMLButtonElement>) => {
   return (
-    <button className={buttonVariants({ intent, size, className })} {...props}>
-      {children}
+    <button className="group absolute -bottom-5 left-2/4 flex w-40 -translate-x-2/4 items-center justify-center gap-2 rounded-full border border-rose300 bg-white py-3 transition-all hover:border-redType">
+      <img src={AddToCartIcon} alt="" className="h-5 w-5" />
+      <p className="text-nowrap transition-all group-hover:text-redType">Add to Cart</p>
     </button>
   );
 };
