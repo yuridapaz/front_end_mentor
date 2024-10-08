@@ -1,4 +1,5 @@
 import { CartButton } from './components/CartButton';
+import NumberInput from './components/NumberInput';
 
 function App() {
   return (
@@ -9,8 +10,14 @@ function App() {
       <div className="">
         <div className="flex flex-col gap-4">
           <div className="relative w-full rounded-lg">
-            <img src={'src/assets/images/mobile/image-baklava-mobile.jpg'} className="rounded-lg object-cover" alt="" />
+            <img
+              src={'src/assets/images/mobile/image-baklava-mobile.jpg'}
+              className="rounded-lg"
+              // border-2 border-white hover:border-redType
+              alt=""
+            />
             <CartButton />
+            <NumberInput />
           </div>
           <div className="flex flex-col">
             <p className="text-sm font-extralight">Waffle</p>
