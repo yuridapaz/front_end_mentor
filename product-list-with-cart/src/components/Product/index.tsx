@@ -4,10 +4,10 @@ import { tv } from 'tailwind-variants';
 const productCardVariants = tv({
   slots: {
     wrapper: 'flex flex-col gap-4',
-    imageWrapper: 'relative flex w-full justify-center rounded-lg',
+    imageWrapper: 'relative flex w-full  justify-center rounded-lg',
     name: 'text-sm font-extralight',
-    description: 'font-semibold',
-    price: 'font-medium text-redType',
+    description: 'font-semibold md:text-sm',
+    price: 'font-medium text-redType md:flex md:items-end ',
   },
 });
 
@@ -26,9 +26,11 @@ const ProductCard = () => {
         <CartButton />
         {/* <NumberInput /> */}
       </div>
-      <div className="flex flex-col">
-        <p className={name()}>Waffle</p>
-        <p className={description()}>Waffle with Berries</p>
+      <div className="md: flex flex-col md:mt-1 md:w-full md:flex-row md:justify-between">
+        <div>
+          <p className={name()}>Waffle</p>
+          <p className={description()}>Waffle with Berries</p>
+        </div>
         <p className={price()}>$6.50</p>
       </div>
     </div>

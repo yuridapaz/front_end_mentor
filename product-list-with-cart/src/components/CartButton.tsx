@@ -4,9 +4,9 @@ import { tv, type VariantProps } from 'tailwind-variants';
 
 const cartButtonVariants = tv({
   slots: {
-    base: 'group absolute -bottom-5 left-2/4 flex h-12 w-44 -translate-x-2/4 items-center justify-center gap-2 rounded-full border border-rose300 bg-white py-3 transition-all hover:border-redType',
+    base: 'group absolute -bottom-5 left-2/4 flex h-12 w-44 -translate-x-2/4 items-center justify-center gap-2 md:h-10 md:w-36 rounded-full border border-rose300 bg-white py-3 transition-all hover:border-redType',
     icon: 'h-5 w-5',
-    text: 'text-nowrap transition-all group-hover:text-redType',
+    text: 'text-nowrap transition-all group-hover:text-redType md:text-sm',
   },
 });
 
