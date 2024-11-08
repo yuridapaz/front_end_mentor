@@ -1,6 +1,6 @@
 import { Cart, CartAction, CartActionType, CartItem } from './types';
 
-import { sumItems } from '../components/helpers/functions';
+import { sumItems } from '../helpers/functions';
 
 export const cartReducer: React.Reducer<Cart, CartAction> = (state: Cart, action: CartAction) => {
   const { type, payload } = action;
@@ -39,7 +39,7 @@ export const cartReducer: React.Reducer<Cart, CartAction> = (state: Cart, action
 
     case CartActionType.REMOVE_FROM_CART:
       // Método 1
-      const IndexRem = state.cartList.findIndex((item: CartItem) => item.id !== payload.id);
+      const IndexRem = state.cartList.findIndex((item: CartItem) => item.id === payload.id);
       state.cartList.splice(IndexRem!, 1);
 
       return {

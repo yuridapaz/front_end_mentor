@@ -14,8 +14,9 @@ const StateProvider = ({ children }: props) => {
     initialCartState,
   );
 
-  return <StateContext.Provider value={{}}>{children}</StateContext.Provider>;
+  return <StateContext.Provider value={{ state, dispatch }}>{children}</StateContext.Provider>;
 };
 
 export default StateProvider;
+
 export const useStateProvider = () => useContext(StateContext);
