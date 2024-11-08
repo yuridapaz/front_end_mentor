@@ -9,6 +9,8 @@ const CartComponent = (props: Props) => {
     <div className="my-6 flex flex-col gap-4 rounded-xl bg-white px-6 py-8 md:my-0">
       <h1 className="text-xl font-semibold text-redType">Your Cart (10)</h1>
       <CartItem onClick={() => console.log('first')} name="Waffle" amount={1} price={5.5} totalPrice={5.5} />
+      <CartItem onClick={() => console.log('first')} name="Waffle" amount={1} price={5.5} totalPrice={5.5} />
+      <CartItem onClick={() => console.log('first')} name="Waffle" amount={1} price={5.5} totalPrice={5.5} />
       <div className="flex items-center justify-between">
         <p className="md:text-sm">Order total</p>
         <p className="text-2xl font-bold md:text-lg">$0.00</p>

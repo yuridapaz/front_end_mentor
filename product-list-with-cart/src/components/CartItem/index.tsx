@@ -11,7 +11,7 @@ type CartItemProps = ButtonHTMLAttributes<HTMLButtonElement> & {
 };
 const cartItem = ({ name, amount, price, totalPrice, onChange, onClick }: CartItemProps) => {
   return (
-    <div className="flex items-center justify-between border-b pb-4">
+    <div className="flex items-center justify-between border-b pb-4 md:pb-2">
       <div className="flex flex-col gap-1">
         <p className="font-semibold">{name}</p>
         <div className="flex items-center gap-3">

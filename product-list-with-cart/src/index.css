@@ -10,6 +10,8 @@
   box-sizing: border-box;
   font-family: 'Red Hat Text', sans-serif;
   font-size: 16px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(129, 129, 129, 0.224) rgba(0, 0, 0, 0);
 }
 
 @layer base {
