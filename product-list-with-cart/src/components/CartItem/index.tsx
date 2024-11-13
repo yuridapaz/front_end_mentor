@@ -3,13 +3,13 @@ import React, { ButtonHTMLAttributes } from 'react';
 import { IoCloseCircleOutline } from 'react-icons/io5';
 import { tv } from 'tailwind-variants';
 
-type CartItemProps = ButtonHTMLAttributes<HTMLButtonElement> & {
+export type CartItemProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   name: string;
   amount: number;
   price: number;
   totalPrice: number;
 };
-const cartItem = ({ name, amount, price, totalPrice, onChange, onClick }: CartItemProps) => {
+const cartItem = ({ name, amount, price, totalPrice, onClick }: CartItemProps) => {
   return (
     <div className="flex items-center justify-between border-b pb-4 md:pb-2">
       <div className="flex flex-col gap-1">
@@ -20,7 +20,7 @@ const cartItem = ({ name, amount, price, totalPrice, onChange, onClick }: CartIt
           <p className="font-semibold text-rose400 md:text-sm">${totalPrice.toFixed(2)}</p>
         </div>
       </div>
-      <button onChange={onChange} onClick={onClick}>
+      <button onClick={onClick}>
         <IoCloseCircleOutline className="h-6 w-6 text-rose400" />
       </button>
     </div>

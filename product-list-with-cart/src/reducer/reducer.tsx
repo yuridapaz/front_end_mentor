@@ -1,15 +1,15 @@
 import { Cart, CartAction, CartActionType, CartItem } from './types';
-
-import { sumItems } from '../helpers/functions';
+import { findItemIndex, sumItems } from '../helpers/functions';
 
 export const cartReducer: React.Reducer<Cart, CartAction> = (state: Cart, action: CartAction) => {
   const { type, payload } = action;
 
   switch (type) {
     case CartActionType.ADD_TO_CART:
-      if (!state.cartList.find((item: CartItem) => item.id === payload.id)) {
-        state.cartList.push({ ...payload, quantity: 1, totalPrice: payload.price });
-      }
+      // if (findItemIndex(payload.id, state.cartList) < 0) {
+      //   state.cartList.push({ ...payload, quantity: 1, totalPrice: payload.price });
+      // }
+      state.cartList.push({ ...payload, quantity: 1, totalPrice: payload.price });
       return {
         ...state,
         cartList: [...state.cartList],
@@ -18,7 +18,7 @@ export const cartReducer: React.Reducer<Cart, CartAction> = (state: Cart, action
       break;
 
     case CartActionType.INCREASE_AMOUNT:
-      const IndexInc = state.cartList.findIndex((item: CartItem) => item.id === payload.id);
+      const IndexInc = findItemIndex(payload.id, state.cartList);
       state.cartList[IndexInc!].quantity += 1;
       state.cartList[IndexInc!].totalPrice = state.cartList[IndexInc!].quantity * state.cartList[IndexInc!].price;
       return {
@@ -28,7 +28,7 @@ export const cartReducer: React.Reducer<Cart, CartAction> = (state: Cart, action
       break;
 
     case CartActionType.DECREASE_AMOUNT:
-      const IndexDec = state.cartList.findIndex((item: CartItem) => item.id === payload.id);
+      const IndexDec = findItemIndex(payload.id, state.cartList);
       state.cartList[IndexDec!].quantity -= 1;
       state.cartList[IndexDec!].totalPrice = state.cartList[IndexDec!].quantity * state.cartList[IndexDec!].price;
       return {
@@ -39,7 +39,7 @@ export const cartReducer: React.Reducer<Cart, CartAction> = (state: Cart, action
 
     case CartActionType.REMOVE_FROM_CART:
       // Método 1
-      const IndexRem = state.cartList.findIndex((item: CartItem) => item.id === payload.id);
+      const IndexRem = findItemIndex(payload.id, state.cartList);
       state.cartList.splice(IndexRem!, 1);
 
       return {

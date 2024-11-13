@@ -14,7 +14,7 @@ type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & VariantProps<typeof
 export const CartButton = ({ className, ...props }: ButtonProps) => {
   const { base, icon, text } = cartButtonVariants();
   return (
-    <button className={base({ className })} {...props}>
+    <button className={base({ className })} {...props} onClick={props.onClick}>
       <img src={AddToCartIcon} alt="" className={icon()} />
       <p className={text()}>Add to Cart</p>
     </button>

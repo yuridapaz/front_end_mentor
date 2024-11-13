@@ -6,9 +6,9 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 
 createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-    <StateProvider>
-      <App />
-    </StateProvider>
-  </StrictMode>,
+  // <StrictMode>
+  <StateProvider>
+    <App />
+  </StateProvider>,
+  // </StrictMode>,
 );
