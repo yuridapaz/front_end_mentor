@@ -1,28 +1,28 @@
-import { queryOptions, useQuery, useSuspenseQuery } from '@tanstack/react-query';
-import { requestBorders, requestCountries, requestCountry } from '../../context/helpers';
+import { Link, createLazyFileRoute, useRouter } from '@tanstack/react-router';
+import { requestBorders, requestCountry } from '../../context/helpers';
 
 import { FaArrowLeftLong } from 'react-icons/fa6';
-import axios from 'axios';
-import { createLazyFileRoute } from '@tanstack/react-router';
-import { queryClient } from '../../main';
 
 export const Route = createLazyFileRoute('/CountryPage/$name')({
   component: () => <Index />,
 });
 
 const Index = () => {
+  const router = useRouter();
   const { name } = Route.useParams();
   const { data } = requestCountry(name);
   const country = data?.data[0];
-  const { data: borderCountries, isFetched } = requestBorders(country?.borders);
-  console.log('borderCountries:', borderCountries);
+  const { data: borderCountries } = requestBorders(country?.borders);
 
   return (
     <>
       {country && (
         <div className="flex min-h-[calc(100vh-56px)] w-full flex-col overflow-hidden px-8 py-6">
           <div className="mb-8">
-            <button className="flex items-center gap-3 bg-white px-6 py-2 text-sm shadow-lg">
+            <button
+              className="flex items-center gap-3 bg-white px-6 py-2 text-sm shadow-lg"
+              onClick={() => router.history.back()}
+            >
               <FaArrowLeftLong /> Back
             </button>
           </div>
@@ -79,9 +79,13 @@ const Index = () => {
               <div className="flex flex-wrap gap-2">
                 {borderCountries?.data?.map((country: any) => {
                   return (
-                    <p key={country.name.common} className="bg-white px-5 py-1 text-xs shadow-lg">
+                    <Link
+                      to={`/CountryPage/${country.name.common}`}
+                      key={country.name.common}
+                      className="bg-white px-5 py-1 text-xs shadow-lg"
+                    >
                       {country.name.common}
-                    </p>
+                    </Link>
                   );
                 })}
               </div>

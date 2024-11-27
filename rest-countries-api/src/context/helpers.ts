@@ -18,6 +18,11 @@ export const requestCountry = (name: string) => {
 export const requestBorders = (borders: string[]) => {
   return useQuery({
     queryKey: ['borders', borders],
-    queryFn: async () => await axios.get(`https://restcountries.com/v3.1/alpha?codes=${borders?.join(',')}`),
+    queryFn: async () => {
+      if (!borders) {
+        return null;
+      }
+      return await axios.get(`https://restcountries.com/v3.1/alpha?codes=${borders.join(',')}`);
+    },
   });
 };

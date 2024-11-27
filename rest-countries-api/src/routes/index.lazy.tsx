@@ -1,14 +1,29 @@
+import { useEffect, useState } from 'react';
+
 import CountryCard from '../components/CountryCard';
 import { HiMagnifyingGlass } from 'react-icons/hi2';
 import { createLazyFileRoute } from '@tanstack/react-router';
 import { requestCountries } from '../context/helpers';
 
+interface Country {
+  name: {
+    common: string;
+  };
+  // Add other properties as needed
+}
 export const Route = createLazyFileRoute('/')({
   component: Index,
 });
 
 function Index() {
+  const [countriesData, setCountriesData] = useState<Country[]>([]);
   const { data } = requestCountries();
+
+  useEffect(() => {
+    if (data) {
+      setCountriesData(data.data);
+    }
+  }, [data]);
 
   return (
     <div className="max-w-full p-4">
@@ -37,9 +52,14 @@ function Index() {
 
       <div className="flex flex-col items-center gap-8 p-4">
         {/* country wrapper */}
-        {data && <CountryCard country={data.data[0]} />}
+        {countriesData &&
+          countriesData?.map((country) => {
+            console.log('country:', country?.name?.common);
+            return <CountryCard key={country?.name?.common} country={country} />;
+          })}
+        {/* {data && <CountryCard country={data.data[0]} />}
         {data && <CountryCard country={data.data[2]} />}
-        {data && <CountryCard country={data.data[4]} />}
+        {data && <CountryCard country={data.data[4]} />} */}
 
         {/*   country wrapper */}
       </div>
