@@ -16,22 +16,24 @@ import { Route as rootRoute } from './routes/__root'
 
 // Create Virtual Routes
 
-const AboutLazyImport = createFileRoute('/about')()
 const IndexLazyImport = createFileRoute('/')()
+const CountryPageNameLazyImport = createFileRoute('/CountryPage/$name')()
 
 // Create/Update Routes
-
-const AboutLazyRoute = AboutLazyImport.update({
-  id: '/about',
-  path: '/about',
-  getParentRoute: () => rootRoute,
-} as any).lazy(() => import('./routes/about.lazy').then((d) => d.Route))
 
 const IndexLazyRoute = IndexLazyImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRoute,
 } as any).lazy(() => import('./routes/index.lazy').then((d) => d.Route))
+
+const CountryPageNameLazyRoute = CountryPageNameLazyImport.update({
+  id: '/CountryPage/$name',
+  path: '/CountryPage/$name',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() =>
+  import('./routes/CountryPage/$name.lazy').then((d) => d.Route),
+)
 
 // Populate the FileRoutesByPath interface
 
@@ -44,11 +46,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexLazyImport
       parentRoute: typeof rootRoute
     }
-    '/about': {
-      id: '/about'
-      path: '/about'
-      fullPath: '/about'
-      preLoaderRoute: typeof AboutLazyImport
+    '/CountryPage/$name': {
+      id: '/CountryPage/$name'
+      path: '/CountryPage/$name'
+      fullPath: '/CountryPage/$name'
+      preLoaderRoute: typeof CountryPageNameLazyImport
       parentRoute: typeof rootRoute
     }
   }
@@ -58,37 +60,37 @@ declare module '@tanstack/react-router' {
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexLazyRoute
-  '/about': typeof AboutLazyRoute
+  '/CountryPage/$name': typeof CountryPageNameLazyRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexLazyRoute
-  '/about': typeof AboutLazyRoute
+  '/CountryPage/$name': typeof CountryPageNameLazyRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexLazyRoute
-  '/about': typeof AboutLazyRoute
+  '/CountryPage/$name': typeof CountryPageNameLazyRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about'
+  fullPaths: '/' | '/CountryPage/$name'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about'
-  id: '__root__' | '/' | '/about'
+  to: '/' | '/CountryPage/$name'
+  id: '__root__' | '/' | '/CountryPage/$name'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexLazyRoute: typeof IndexLazyRoute
-  AboutLazyRoute: typeof AboutLazyRoute
+  CountryPageNameLazyRoute: typeof CountryPageNameLazyRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexLazyRoute: IndexLazyRoute,
-  AboutLazyRoute: AboutLazyRoute,
+  CountryPageNameLazyRoute: CountryPageNameLazyRoute,
 }
 
 export const routeTree = rootRoute
@@ -102,14 +104,14 @@ export const routeTree = rootRoute
       "filePath": "__root.tsx",
       "children": [
         "/",
-        "/about"
+        "/CountryPage/$name"
       ]
     },
     "/": {
       "filePath": "index.lazy.tsx"
     },
-    "/about": {
-      "filePath": "about.lazy.tsx"
+    "/CountryPage/$name": {
+      "filePath": "CountryPage/$name.lazy.tsx"
     }
   }
 }

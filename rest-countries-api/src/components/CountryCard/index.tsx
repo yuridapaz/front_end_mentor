@@ -1,4 +1,4 @@
-import { Link } from 'react-router';
+import { Link } from '@tanstack/react-router';
 import React from 'react';
 
 type Props = {
@@ -7,7 +7,7 @@ type Props = {
 
 const CountryCard = ({ country }: Props) => {
   return (
-    <Link className="w-3/4 cursor-pointer bg-white" to={`/country/${country.name.common}`}>
+    <Link className="w-3/4 cursor-pointer bg-white" to={`/CountryPage/${country.name.common}`}>
       <div className="w-full">
         <img src={country.flags.png} alt="" className="h-40 w-full object-cover" />
       </div>
