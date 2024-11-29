@@ -1,10 +1,19 @@
 import axios from 'axios';
 import { useQuery } from '@tanstack/react-query';
 
-export const requestCountries = () => {
+export const requestCountries = (region: string) => {
+  if (!region) {
+    return useQuery({
+      queryKey: ['countries'],
+      queryFn: async () => await axios.get('https://restcountries.com/v3.1/all'),
+      refetchOnWindowFocus: false,
+    });
+  }
   return useQuery({
-    queryKey: ['countries'],
-    queryFn: async () => await axios.get('https://restcountries.com/v3.1/all'),
+    queryKey: ['countries', region],
+    queryFn: async () => {
+      return await axios.get(`https://restcountries.com/v3.1/region/${region}`);
+    },
   });
 };
 

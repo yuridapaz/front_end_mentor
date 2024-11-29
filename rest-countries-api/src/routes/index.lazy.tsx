@@ -1,29 +1,25 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import CountryCard from '../components/CountryCard';
 import { HiMagnifyingGlass } from 'react-icons/hi2';
 import { createLazyFileRoute } from '@tanstack/react-router';
 import { requestCountries } from '../context/helpers';
 
-interface Country {
-  name: {
-    common: string;
-  };
-  // Add other properties as needed
-}
+// const regionOptions = '' | 'africa' | 'america' | 'asia' | 'europe' | 'oceania';
+
 export const Route = createLazyFileRoute('/')({
   component: Index,
 });
 
 function Index() {
-  const [countriesData, setCountriesData] = useState<Country[]>([]);
-  const { data } = requestCountries();
+  const [region, setRegion] = useState<string>('');
+  const { data: countries } = requestCountries(region);
 
-  useEffect(() => {
-    if (data) {
-      setCountriesData(data.data);
-    }
-  }, [data]);
+  const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    e.preventDefault();
+
+    setRegion(e.target.value);
+  };
 
   return (
     <div className="max-w-full p-4">
@@ -40,6 +36,7 @@ function Index() {
           name="continents"
           id="continents"
           className="min-w-48 rounded-md bg-white p-2.5 text-sm font-light shadow-md"
+          onChange={handleChange}
         >
           <option value="">-- Filter by Region --</option>
           <option value="africa">Africa</option>
@@ -52,15 +49,8 @@ function Index() {
 
       <div className="flex flex-col items-center gap-8 p-4">
         {/* country wrapper */}
-        {countriesData &&
-          countriesData?.map((country) => {
-            console.log('country:', country?.name?.common);
-            return <CountryCard key={country?.name?.common} country={country} />;
-          })}
-        {/* {data && <CountryCard country={data.data[0]} />}
-        {data && <CountryCard country={data.data[2]} />}
-        {data && <CountryCard country={data.data[4]} />} */}
-
+        {countries &&
+          countries?.data?.map((country: any) => <CountryCard key={country?.name?.common} country={country} />)}
         {/*   country wrapper */}
       </div>
     </div>

@@ -6,7 +6,6 @@ type Props = {
 };
 
 const CountryCard = ({ country }: Props) => {
-  // console.log(country);
   return (
     <Link className="w-3/4 cursor-pointer bg-white" to={`/CountryPage/${country?.name?.common}`}>
       <div className="w-full">
